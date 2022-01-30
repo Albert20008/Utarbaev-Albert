@@ -1,0 +1,49 @@
+body{
+    background-image: url("../image/background.jpg");
+    color: white;
+}
+
+main{
+    margin-top: 50px;
+}
+
+hr{
+    margin: 0;
+    height: 2px;
+    background-color: black;
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    padding-left: 5%;
+}
+
+.PhotoProfile{
+    float: left;
+    margin-left: 80px;
+    height: 400px;
+    width: 400px;
+}
+
+.bloc_profile{
+    float: right;
+    padding-right: 5%;
+}
+
+.name_profile{
+    padding-left: calc(100% / 3);
+}
+.info{
+    font-size: 18px
+}
+
+.info-aboutMe{
+    float: left;
+    width: 45%;
+}
+
+.info-wishes{
+    float: right;
+    width: 45%;
+}
