@@ -1,0 +1,78 @@
+table{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.cell{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-between;
+    width: 95px;
+    height: 55px;
+    border: 1px solid black;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.uppercase{
+    display: flex;
+    justify-content: space-between;
+}
+
+.abbreviated-name-element{
+    font-size: 27px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.box-numbers{
+    display: flex;
+    flex-direction: column;
+}
+
+.number{
+    text-align: right;
+}
+
+.name-element{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: left;
+}
+
+.abbreviated-name-elementRight{
+    font-size: 27px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.numberLeft{
+    text-align: left;
+}
+
+.name-elementRight{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+}
+
+.background-pink{
+    background-color: #e4939b;
+}
+
+.background-yellow{
+    background-color: #f8e437;
+}
+
+.background-blue{
+    background-color: #93d1de;
+}

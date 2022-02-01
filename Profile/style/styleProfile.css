@@ -3,6 +3,11 @@ body{
     color: white;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
+
 main{
     margin-top: 50px;
 }
@@ -46,4 +51,10 @@ hr{
 .info-wishes{
     float: right;
     width: 45%;
+}
+
+.table{
+    float: right;
+    height: 100px;
+    width: 100px;
 }
