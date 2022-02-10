@@ -60,15 +60,16 @@ hr{
 }
 
 .table{
-    float: right;
     height: 100px;
     width: 100px;
 }
 
+.tasks{
+    height: 100px;
+    width: auto;
+}
+
 .Pictures{
-    /*
-    background-image: url("../image/background_animals.jpg");
-    */
     padding-top: 100px;
     margin-top: 200px;
 }
@@ -76,17 +77,20 @@ hr{
 .container-boxes-cats{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .box-cat{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .image-animals{
     width: 200px;
     height: 200px;
+    text-align: center;
 }
 
 .text-animals{
@@ -103,6 +107,17 @@ hr{
 }
 
 .box-dog{
+    text-align: center;
+}
+
+.container-footer{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-footer{
     text-align: center;
 }
 
@@ -138,7 +153,7 @@ hr{
 }
 
 @media screen and (max-width: 650px) {
-    .container-boxes-cats{
-        flex-wrap: wrap;
+    .box-cat{
+        flex-basis: 50%;
     }
 }
