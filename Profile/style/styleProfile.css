@@ -110,6 +110,16 @@ hr{
     text-align: center;
 }
 
+.container-data{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.data{
+    display: block;
+}
+
 .container-footer{
     height: 100px;
     display: flex;
