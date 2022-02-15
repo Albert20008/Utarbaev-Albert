@@ -11,14 +11,14 @@
 <header>
     <div class="container-header">
         <a href="../index.html">
-            <img class="logo" alt="Логотип" src="../image/logo.png">
+            <img class="logo" alt="Логотип" src="/image/logo.png">
         </a>
         <div class="container-links">
             <a href="../tasks.php">
-                <img class="tasks" src="../image/tasks.png">
+                <img class="tasks" src="/image/tasks.png">
             </a>
             <a href="../table.html">
-                <img class="table" src="../image/himuu.jpg">
+                <img class="table" src="/image/himuu.jpg">
             </a>
         </div>
     </div>

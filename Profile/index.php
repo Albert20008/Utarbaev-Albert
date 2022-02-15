@@ -1,4 +1,10 @@
 <?php
+
+function HowManyDays(string $strData): int
+{
+    return (int)((time() - strtotime($strData)) / 86400);
+}
+
 $a = getdate();
 
 if ($a["hours"] >= 8 and $a["hours"] < 20) {
@@ -23,67 +29,6 @@ $textWishes = "
 можно задать и получить на него понятный ответ.";
 
 $textWishes = explode(' ', $textWishes);
-
-$text = [];
-$text["Name"] = "Утарбаев Альберт";
-$text["aboutMe"] = "Немного обо мне: 
-Я студент 2 курса МГТУ 
-Только начал учится программированию. 
-В прошлом немного знаком с языками C++ и Python.";
-
-$text["wishes"] = "На занятиях мне очень понравилась лояльность преподавателей. 
-Практически любой вопрос, возникший на занятии, 
-можно задать и получить на него понятный ответ";
-
-$text["namePictures"] = [
-        "Не ешь, подумой!", "Не дали рыбовов!", 'Месье "Кот в сапоге"', "Толстощёк",
-        "Белый песик", "Моё одеяло!", "Пёс. Просто пёс.", "Пёсик сидит."
-];
-
-$text["footer"] = "©Все права защищены";
-
-$vowelsList = ["а", "А", "о", "О", "э", "Э", "е", "Е", "и", "И", "ы", "Ы", "у", "У", "ё", "Ё", "ю", "Ю", "я", "Я"];
-
-$countVowels = 0; //тут будут хранится количество гласных
-foreach ($text as $key => $value)
-{
-    if ($key != "namePictures")
-    {
-        for ($i = 0; $i < strlen($value); $i++)
-        {
-            $char = mb_substr($value, $i, 1);
-            if (in_array($char, $vowelsList))
-                $countVowels++;
-        }
-    }
-    else{
-        foreach ($text[$key] as $value)
-        {
-            for ($i = 0; $i < strlen($value); $i++)
-            {
-                $char = mb_substr($value, $i, 1);
-                if (in_array($char, $vowelsList))
-                    $countVowels++;
-            }
-        }
-    }
-}
-
-$countWords = 0;
-foreach ($text as $key => $value)
-{
-    if ($key != "namePictures")
-    {
-        $countWords += count(explode(' ', $value));
-    }
-    else{
-        foreach ($text[$key] as $value)
-        {
-            $countWords += count(explode(' ', $value));
-        }
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +37,7 @@ foreach ($text as $key => $value)
     <link rel="stylesheet" href="style/styleProfile.css">
     <link rel="stylesheet" href=<?echo $style;?>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <title>Профиль</title>
 </head>
 <body>
@@ -200,9 +146,11 @@ foreach ($text as $key => $value)
                         $year = $_GET['year'];
                         $month = $_GET['month'];
                         $day = $_GET['day'];
+
                         $strData = "$year-$month-$day";
-                        $days = (int)((time() - strtotime($strData)) / 86400);
-                        echo "$days - количество дней прошедших с вашего рождения." . "<br>";
+
+                        $data = HowManyDays($strData);
+                        echo "$data - количество дней прошедших с вашего рождения." . "<br>";
                     }
                 ?>
             </p>
