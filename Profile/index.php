@@ -35,7 +35,7 @@ $textWishes = explode(' ', $textWishes);
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style/styleProfile.css">
-    <link rel="stylesheet" href=<?echo $style;?>
+    <link rel="stylesheet" href=<?echo $style;?>>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache">
     <title>Профиль</title>

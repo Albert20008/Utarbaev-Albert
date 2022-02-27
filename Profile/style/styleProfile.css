@@ -131,6 +131,32 @@ hr{
     text-align: center;
 }
 
+.container-links{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.link{
+    margin-left: 10px;
+}
+
+.button-register{
+    background-color: gold;
+    box-shadow: 4px 4px black;
+    color: white;
+    height: 80px;
+    width: 80px;
+}
+
+.button-sql{
+    background-color: red;
+    box-shadow: 4px 4px black;
+    color: white;
+    height: 80px;
+    width: 80px;
+}
+
 @media screen and (max-width: 1200px){
     .PhotoProfile{
         text-align: center;

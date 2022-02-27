@@ -1,0 +1,17 @@
+.container-picture{
+    display: grid;
+}
+
+.box-picture{
+    margin: 40px 0;
+}
+
+.title-picture{
+    font-size: 25px;
+    text-align: center;
+}
+
+.picture{
+    height: 500px;
+    width: 900px;
+}
