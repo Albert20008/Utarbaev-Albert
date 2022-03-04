@@ -1,3 +1,7 @@
+<?php
+require_once "RegisterClass.php";
+?>
+
 <!doctype html>
 <html lang="rus">
 <head>
@@ -22,9 +26,7 @@
     <button class="form-register-button" type="submit" name="submit">Регистрация</button>
     <p>
         <?
-        if (isset($_POST["submit"]))
-        {
-            $loginUsers = $_POST["login"];
+        if (isset($_POST["submit"])) {
             $passwordUsers = hash("md2", $_POST["password"]);
 
             $hostname = "localhost";
@@ -32,38 +34,19 @@
             $password = "1";
             $dbname = "usersdatabase";
 
-            $db_con = mysqli_connect($hostname, $username, $password, $dbname);
+            $register = new RegisterClass($hostname, $username, $password, $dbname);
 
-            $query = mysqli_query($db_con, "SELECT Login FROM `users`;");
-            $arraySelect = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-            $result = true;
-            foreach ($arraySelect as $value)
-            {
-                foreach ($value as $key => $item)
-                {
-                    if ($key == "Login")
-                    {
-                        if ($item == $loginUsers)
-                        {
-                            $result = false;
-                            break;
-                        }
-                    }
-                }
-            }
-
+            $result = $register->checkLoginUser($_POST["login"]);
             if (!$result)
                 echo "Пользователь с таким логином уже существует";
-            else
-            {
-                $query = mysqli_query($db_con, "INSERT INTO `users`(`ID`, `Login`, `Password`) VALUES (NULL,'$loginUsers','$passwordUsers')");
-
+            else {
+                $query = $register->addUsers($_POST["login"], $passwordUsers);
                 if ($query)
                     echo "Пользователь создан (^-^)";
                 else
                     echo "Извините, произошёл сбой, попробуйте позже (._.)";
             }
+        }
         ?>
     </p>
 </form>
