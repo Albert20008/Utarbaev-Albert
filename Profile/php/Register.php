@@ -1,7 +1,3 @@
-<?php
-require_once "RegisterClass.php";
-?>
-
 <!doctype html>
 <html lang="rus">
 <head>
@@ -26,7 +22,9 @@ require_once "RegisterClass.php";
     <button class="form-register-button" type="submit" name="submit">Регистрация</button>
     <p>
         <?
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["submit"]))
+        {
+            $loginUsers = $_POST["login"];
             $passwordUsers = hash("md2", $_POST["password"]);
 
             $hostname = "localhost";
@@ -34,19 +32,38 @@ require_once "RegisterClass.php";
             $password = "1";
             $dbname = "usersdatabase";
 
-            $register = new RegisterClass($hostname, $username, $password, $dbname);
+            $db_con = mysqli_connect($hostname, $username, $password, $dbname);
 
-            $result = $register->checkLoginUser($_POST["login"]);
+            $query = mysqli_query($db_con, "SELECT Login FROM `users`;");
+            $arraySelect = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+            $result = true;
+            foreach ($arraySelect as $value)
+            {
+                foreach ($value as $key => $item)
+                {
+                    if ($key == "Login")
+                    {
+                        if ($item == $loginUsers)
+                        {
+                            $result = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
             if (!$result)
                 echo "Пользователь с таким логином уже существует";
-            else {
-                $query = $register->addUsers($_POST["login"], $passwordUsers);
+            else
+            {
+                $query = mysqli_query($db_con, "INSERT INTO `users`(`ID`, `Login`, `Password`) VALUES (NULL,'$loginUsers','$passwordUsers')");
+
                 if ($query)
                     echo "Пользователь создан (^-^)";
                 else
                     echo "Извините, произошёл сбой, попробуйте позже (._.)";
             }
-        }
         ?>
     </p>
 </form>

@@ -1,7 +1,3 @@
-<?php
-require_once "RegisterClass.php";
-?>
-
 <!doctype html>
 <html lang="rus">
 <head>
@@ -34,20 +30,29 @@ require_once "RegisterClass.php";
 
         if (isset($submit))
         {
+            $loginUser = $_POST["login"];
+            $passwordUser = hash("md2", $_POST["password"]);
+
             $hostname = "localhost";
             $username = "test";
             $password = "1";
             $dbname = "usersdatabase";
 
-            $register = new RegisterClass($hostname, $username, $password, $dbname);
+            $db_con = mysqli_connect($hostname, $username, $password, $dbname);
 
-            $result = $register->checkUser($_POST["login"], $_POST["password"]);
-            if ($result){
-                $loginUser = $_POST["login"];
-                echo "Система распознала '$loginUser'\n\rДобром пожаловать!";
-            }
-            else{
-                echo "Неправильный ввод пароля или логина\n\rПовторите попытку";
+            $select = mysqli_query($db_con, "SELECT * FROM Users");
+            $arrUsers = mysqli_fetch_all($select, MYSQLI_ASSOC);
+
+            foreach ($arrUsers as $item)
+            {
+                if ($item["Login"] == $loginUser)
+                {
+                    if ($item["Password"] == $passwordUser)
+                    {
+                        echo "Система распознала '$loginUser'\n\rДобром пожаловать!";
+                        break;
+                    }
+                }
             }
         }
         ?>
