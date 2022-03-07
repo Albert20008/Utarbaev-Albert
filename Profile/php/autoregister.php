@@ -44,7 +44,10 @@ require_once "RegisterClass.php";
             $result = $register->checkUser($_POST["login"], $_POST["password"]);
             if ($result){
                 $loginUser = $_POST["login"];
-                echo "Система распознала '$loginUser'\n\rДобром пожаловать!";
+                $irl = "User.php";
+                setcookie("User", $_POST["login"], 600);
+                header("Location: " . $irl);
+                exit();
             }
             else{
                 echo "Неправильный ввод пароля или логина\n\rПовторите попытку";
